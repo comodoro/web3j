@@ -1,16 +1,17 @@
 package org.web3j.crypto;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.spongycastle.util.encoders.Hex;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
+import org.spongycastle.util.encoders.Hex;
 import org.web3j.utils.Strings;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -54,7 +55,7 @@ public class MnemonicUtilsTest {
 
     private static String readAllLinesWithDeliminator(
             String path, String delimiter) throws IOException {
-        return Strings.join(MnemonicUtils.readAllLines(path), delimiter);
+        return Strings.join(Files.readAllLines(Paths.get(path)), delimiter);
     }
 
     /**
